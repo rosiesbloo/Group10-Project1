@@ -64,7 +64,7 @@ public class MarioController : MonoBehaviour
             }
             else if (moveDirection == Vector3.zero)
             {
-                marioSpeed = 0;
+                marioSpeed = 3;
             }
 
             if (Input.GetButtonDown("Jump") == true)
@@ -77,6 +77,11 @@ public class MarioController : MonoBehaviour
         if (isJumping && velocity.y > 0 && Input.GetButtonUp("Jump"))
         {
             gravityMultiplier = 10;
+        }
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
         }
 
         moveDirection *= marioSpeed;

@@ -9,12 +9,13 @@ public class GoombaController : MonoBehaviour
     private Rigidbody rb;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         moveX = -1f;
-        moveSpeed = 3f;
+        moveSpeed = 2f;
     }
 
     // Update is called once per frame
