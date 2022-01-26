@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8357370241194658434}
   - component: {fileID: 6061740358830980680}
   - component: {fileID: 4926388581530868134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe_Med (1)
   m_TagString: Pipe
   m_Icon: {fileID: 0}
