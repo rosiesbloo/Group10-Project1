@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 8a71438e667b6d645a3b9ce2c2aee15d
+guid: b9d78ab919229a44190c74c7bb35a383
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ground_initialShadingGroup_BaseColor
-    second: {fileID: 2800000, guid: dc963e31bbbc30845b76b35656d806e2, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
