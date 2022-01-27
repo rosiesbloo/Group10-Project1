@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goomba
   - Pipe
+  - Zone
   layers:
   - Default
   - TransparentFX

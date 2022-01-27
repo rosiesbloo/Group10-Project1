@@ -14,8 +14,8 @@ public class GoombaController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        moveX = -1f;
-        moveSpeed = 2f;
+        moveX = 0f;
+        moveSpeed = 0f;
     }
 
     // Update is called once per frame
@@ -24,6 +24,14 @@ public class GoombaController : MonoBehaviour
         rb.velocity = new Vector3(moveX * moveSpeed, rb.velocity.y);
     }
 
+    void OnTriggerEnter (Collider other)
+    {
+        if (other.CompareTag("Zone"))
+        {
+        moveX = -1f;
+        moveSpeed =2f;
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Pipe")

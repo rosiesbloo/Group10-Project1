@@ -41,6 +41,7 @@
      <Compile Include="Assets\Scripts\KoopaController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\MarioController.cs" />
+     <Compile Include="Assets\Scripts\Block_script.cs" />
      <None Include="Assets\Allegorithmic\Plugins\EULA.txt" />
      <None Include="Assets\Allegorithmic\Plugins\engine_build_info.txt" />
     <Reference Include="UnityEngine">
