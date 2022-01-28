@@ -5,19 +5,25 @@ using UnityEngine;
 public class Block_script : MonoBehaviour
 {
 
- public Animator anim;
 
- void Start ()
- {
-     anim = GetComponent<Animator>();
- }
-
+    [SerializeField] private Animator myAnimatorController;
+ 
  private void OnTriggerEnter(Collider other)
     {
  
         if (other.CompareTag("Player"))
         {
-     anim.Play("CubeBounce2");
+                       myAnimatorController.SetBool("IsHit", true);
+    }
+
+    }
+
+private void OnTriggerExit(Collider other)
+    {
+ 
+        if (other.CompareTag("Player"))
+        {
+            myAnimatorController.SetBool("IsHit", false);
     }
 
     }
