@@ -12,6 +12,11 @@ public class MarioController : MonoBehaviour
     public float gravity;
     public float gravityMultiplier;
 
+
+    //Animations
+    public Animator animator;
+    private string currentState;
+
     //Ground Check
     public bool isJumping;
     public bool isGrounded;
@@ -30,6 +35,7 @@ public class MarioController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,6 +51,18 @@ public class MarioController : MonoBehaviour
 
         moveDirection = new Vector3(moveX, 0, 0);
 
+        //Flip Animation
+        if (Input.GetAxis("Horizontal") > 0.01f)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }  
+        else if (Input.GetAxis("Horizontal") < -0.01f)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+            
+        //Grounded
+
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -57,32 +75,42 @@ public class MarioController : MonoBehaviour
             if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
             {
                 marioSpeed = walkSpeed;
+                ChangeAnimationState("Little_Mario_Walk");
             }
             else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
             {
                 marioSpeed = runSpeed;
+                ChangeAnimationState("Little_Mario_Run");
             }
             else if (moveDirection == Vector3.zero)
             {
                 marioSpeed = 3;
+                ChangeAnimationState("Little_Mario_Idle");
             }
 
             if (Input.GetButtonDown("Jump") == true)
             {
                 isJumping = true;
                 velocity.y = Mathf.Sqrt(jumpHeight * -4 * gravity);
+                ChangeAnimationState("Little_Mario_Jump");
             }
         }
+
+        //Jumping
 
         if (isJumping && velocity.y > 0 && Input.GetButtonUp("Jump"))
         {
             gravityMultiplier = 10;
         }
+         
+        //Escape Key
 
         if (Input.GetKey("escape"))
         {
             Application.Quit();
         }
+
+        //Move
 
         moveDirection *= marioSpeed;
 
@@ -91,4 +119,14 @@ public class MarioController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
+
+    void ChangeAnimationState(string newState)
+      {
+        if(currentState == newState) return;
+
+        animator.Play(newState);
+
+        currentState = newState;
+     }
+
 }
