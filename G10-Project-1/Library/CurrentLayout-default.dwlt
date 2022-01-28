@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 141
+  controlID: 37
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 73
+  controlID: 38
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 221}
   m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 74
+  controlID: 39
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -405,22 +405,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Materials
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\switt\Desktop\Mario Project\Unity\G10-Project-1
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b4490000
-    m_LastClickedID: 18868
-    m_ExpandedIDs: 0000000086490000
+    m_SelectedIDs: 264a0000
+    m_LastClickedID: 18982
+    m_ExpandedIDs: 00000000ec490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -448,7 +448,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000086490000
+    m_ExpandedIDs: 00000000ec490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -476,7 +476,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000be49000000000000
+    m_ExpandedInstanceIDs: c6230000be49000000000000047b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -500,7 +500,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 97}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -568,10 +568,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fc430000
-      m_LastClickedID: 17404
-      m_ExpandedIDs: 12e7fefffcf4feff02f5feff90fdfeffb87dffff80a4ffff3ab3ffff4efbffff46470000
+      scrollPos: {x: 0, y: 837}
+      m_SelectedIDs: ce6e0000
+      m_LastClickedID: 28366
+      m_ExpandedIDs: a495ffffbe96ffff769affffee9bffffd29effffdca0ffff72a3ffff36a5ffff6ea6ffffc8a9ffffaeb2ffffbcb5ffff12b9ffffd2bbffff54beffffb0c0ffff56c3ffffd0c4ffff9cc6ffffd8c7ffff18c9ffff3ccaffff88cbffff8aeaffffdeecfffffeecffff1aeeffff4efbffffe66b0000e26d0000da700000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -631,9 +631,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 163.69899, y: 9.45941, z: -2.6479194}
+    m_Target: {x: 156.19887, y: 7.774413, z: 0.17474997}
     speed: 2
-    m_Value: {x: 163.69899, y: 9.45941, z: -2.6479194}
+    m_Value: {x: 156.19887, y: 7.774413, z: 0.17474997}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -682,11 +682,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 0.99999994}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 28.985405
+    m_Target: 32.734352
     speed: 2
-    m_Value: 28.985405
+    m_Value: 32.734352
   m_Ortho:
     m_Target: 1
     speed: 2

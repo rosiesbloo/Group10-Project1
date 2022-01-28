@@ -5,20 +5,18 @@ ScriptsOnlyBuild:
     - CameraController
     - GoombaController
     - MarioController
+    - Mat_Change
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -85,11 +83,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3320}
     - Class: 114
-      Script: {instanceID: 5006}
+      Script: {instanceID: 4570}
     - Class: 114
-      Script: {instanceID: 5486}
+      Script: {instanceID: 4636}
     - Class: 114
-      Script: {instanceID: 83258}
+      Script: {instanceID: 5010}
+    - Class: 114
+      Script: {instanceID: 5490}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -737,6 +737,12 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
+      Hash: 587cb1f53082b7644c7660558eccdaab
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Mat_Change
+  - hash:
+      serializedVersion: 2
       Hash: 3165968ba45c74472d279ba04455fccb
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -753,6 +759,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 729f66b8e37477ba618c295b9190dbbb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Block_script
   - hash:
       serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
@@ -945,12 +957,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
-  - hash:
-      serializedVersion: 2
-      Hash: 574c235ae2fa061baf016cd5aa0cde2c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Block_script
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main.unity
