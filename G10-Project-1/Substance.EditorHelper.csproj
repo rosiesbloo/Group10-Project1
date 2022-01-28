@@ -274,32 +274,29 @@
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.16f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.WebGL.Extensions">
- <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.16f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="log4netPlastic">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Newtonsoft.Json">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Antlr3.Runtime">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Alg.Link">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Assets/Allegorithmic/Plugins/Substance/Substance Engine/Editor/SubstanceLink/Alg.Link.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Assets/Allegorithmic/Plugins/Substance/Substance Engine/Editor/SubstanceLink/Alg.Link.dll</HintPath>
  </Reference>
  <Reference Include="Substance.Game">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Assets/Allegorithmic/Plugins/Substance.Game.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Assets/Allegorithmic/Plugins/Substance.Game.dll</HintPath>
  </Reference>
  <Reference Include="Substance.Editor">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Assets/Allegorithmic/Plugins/Substance/Substance Engine/Editor/Substance.Editor.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Assets/Allegorithmic/Plugins/Substance/Substance Engine/Editor/Substance.Editor.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.16f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -647,10 +644,10 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.16f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/switt/Desktop/Mario Project/Unity/G10-Project-1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/ghora/Downloads/Project1/Group10-Project1/G10-Project-1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
