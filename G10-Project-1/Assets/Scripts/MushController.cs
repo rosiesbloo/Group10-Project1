@@ -31,6 +31,8 @@ public class MushController : MonoBehaviour
                             {
                                 MarioController.MarioState = 1;
                             }
+
+            ScoreCounter.score += +1000;
             Destroy(this.gameObject);
                 }
 

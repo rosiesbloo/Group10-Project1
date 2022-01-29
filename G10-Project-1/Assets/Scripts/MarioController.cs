@@ -110,7 +110,7 @@ public class MarioController : MonoBehaviour
 
         if (isJumping && velocity.y > 0 && Input.GetButtonUp("Jump"))
         {
-            gravityMultiplier = 10;
+            gravityMultiplier = 15;
         }
 
         //Escape Key
@@ -135,7 +135,7 @@ public class MarioController : MonoBehaviour
 
     }
 
-    void ChangeAnimationState(string newState)
+    public void ChangeAnimationState(string newState)
       {
         if(currentState == newState) return;
 
