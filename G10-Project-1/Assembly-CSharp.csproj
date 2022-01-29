@@ -47,9 +47,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\FirePController.cs" />
      <Compile Include="Assets\Scripts\GoombaController.cs" />
      <Compile Include="Assets\Scripts\UiController.cs" />
      <Compile Include="Assets\Scripts\KoopaController.cs" />
+     <Compile Include="Assets\Scripts\MushController.cs" />
      <Compile Include="Assets\Scripts\Mat_Change.cs" />
      <Compile Include="Assets\Scripts\Block_script.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />

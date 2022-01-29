@@ -30,12 +30,17 @@ public class MarioController : MonoBehaviour
     //Get Component
     private CharacterController controller;
 
+    //Player States
+    public static int MarioState;
+    public Color FPColor;
+
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        MarioState = 0; 
     }
 
     // Update is called once per frame
@@ -72,20 +77,24 @@ public class MarioController : MonoBehaviour
         {
             gravityMultiplier = 4;
 
-            if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
+            if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift) && !Input.GetButtonUp("Jump"))
             {
                 marioSpeed = walkSpeed;
                 ChangeAnimationState("Little_Mario_Walk");
             }
-            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
+            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift) && !Input.GetButtonUp("Jump"))
             {
                 marioSpeed = runSpeed;
                 ChangeAnimationState("Little_Mario_Run");
             }
-            else if (moveDirection == Vector3.zero)
+            else if (moveDirection == Vector3.zero && !Input.GetButton("Vertical") && !Input.GetButtonUp("Jump"))
             {
                 marioSpeed = 3;
                 ChangeAnimationState("Little_Mario_Idle");
+            }
+            else if(moveDirection == Vector3.zero && Input.GetButton("Vertical"))
+            {
+                ChangeAnimationState("Little_Mario_Crouch");
             }
 
             if (Input.GetButtonDown("Jump") == true)
@@ -96,13 +105,14 @@ public class MarioController : MonoBehaviour
             }
         }
 
+
         //Jumping
 
         if (isJumping && velocity.y > 0 && Input.GetButtonUp("Jump"))
         {
             gravityMultiplier = 10;
         }
-         
+
         //Escape Key
 
         if (Input.GetKey("escape"))
@@ -118,6 +128,11 @@ public class MarioController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        //States
+
+        MarioStates();
+
     }
 
     void ChangeAnimationState(string newState)
@@ -128,5 +143,27 @@ public class MarioController : MonoBehaviour
 
         currentState = newState;
      }
+
+    void MarioStates()
+    {
+        if(MarioState == 0)
+        {
+            transform.localScale = new Vector3(1.1f, 0.98f, 0f);
+            groundCheckDistance = 0.58001f;
+        }
+
+        if(MarioState == 1)
+        {
+            transform.localScale = new Vector3(1.6f, 1.9f, 0);
+            groundCheckDistance = 0.95f;
+        }
+
+        if(MarioState == 2)
+        {
+            gameObject.GetComponent<SpriteRenderer>().material.color = FPColor;
+            transform.localScale = new Vector3(1.6f, 1.9f, 0);
+            groundCheckDistance = 0.95f;
+        }
+    }
 
 }
