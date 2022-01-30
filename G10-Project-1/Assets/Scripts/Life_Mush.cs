@@ -29,8 +29,7 @@ public class Life_Mush : MonoBehaviour
                 {
 
                        
-            ScoreCounter.score += +1000;
-            Destroy(this.gameObject);
+                        Destroy(this.gameObject);
                 }
 
             if (collision.gameObject.tag == "Pipe")

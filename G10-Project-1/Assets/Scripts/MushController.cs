@@ -25,6 +25,7 @@ public class MushController : MonoBehaviour
     void OnCollisionEnter(Collision collision) 
     {
             if(collision.gameObject.tag == "Player")
+                
                 {
 
                         if(MarioController.MarioState == 0)

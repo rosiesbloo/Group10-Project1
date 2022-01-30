@@ -31,7 +31,22 @@ public class GoombaController : MonoBehaviour
         moveX = -1f;
         moveSpeed =2f;
         }
+
+        if (other.CompareTag("Player"))
+        {
+            MarioController controller = other.GetComponent<MarioController>();
+            
+            if (controller != null)
+            {
+          
+            }
+
+            ScoreCounter.score += +100;
+            Destroy(gameObject, 0f);
+        }
+
     }
+    
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Pipe")

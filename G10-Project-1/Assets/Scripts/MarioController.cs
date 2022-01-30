@@ -11,6 +11,9 @@ public class MarioController : MonoBehaviour
     public float jumpHeight;
     public float gravity;
     public float gravityMultiplier;
+    public float timeInvincible = 0.5f;
+    bool isInvincible;
+    float invincibleTimer;
 
 
     //Animations
@@ -65,6 +68,13 @@ public class MarioController : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
+
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
+        }
             
         //Grounded
 
@@ -112,6 +122,8 @@ public class MarioController : MonoBehaviour
         {
             gravityMultiplier = 15;
         }
+        
+
 
         //Escape Key
 
@@ -143,14 +155,40 @@ public class MarioController : MonoBehaviour
 
         currentState = newState;
      }
-
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision other)
     {
-        if(gameObject.CompareTag("Box"))
+        if (other.gameObject.CompareTag("Goomba"))
         {
-            velocity.y = -2f;
-                    }
+            if(isInvincible == false)
+            {
+            if(MarioState == 0)
+            {
+                Debug.Log ("Dead");
+                if (isInvincible)
+                return;
+
+           
+            }
+            if(MarioState == 1)
+            {
+                MarioController.MarioState = 0;
+                
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+
+
+            }
+            if(MarioState == 2)
+            {
+                MarioController.MarioState = 1;
+                isInvincible = true;
+            invincibleTimer = timeInvincible;
+
+            }
+            }
+        }
     }
+
     void MarioStates()
     {
         if(MarioState == 0)
