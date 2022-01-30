@@ -14,6 +14,7 @@ TagManager:
   - Star
   - Box
   - Special
+  - Fireball
   layers:
   - Default
   - TransparentFX

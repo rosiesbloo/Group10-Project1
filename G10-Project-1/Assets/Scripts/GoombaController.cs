@@ -26,6 +26,7 @@ public class GoombaController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Zone"))
         {
         moveX = -1f;
@@ -56,6 +57,12 @@ public class GoombaController : MonoBehaviour
         else if (collision.gameObject.tag == "Goomba")
         {
             moveX *= -1f;
+        }
+
+        if(collision.gameObject.tag == "Fireball")
+        {
+            ScoreCounter.score += +100;
+            Destroy(gameObject, 0f);
         }
     }
 }

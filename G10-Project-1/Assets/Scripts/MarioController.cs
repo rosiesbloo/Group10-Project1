@@ -17,6 +17,8 @@ public class MarioController : MonoBehaviour
     public float timeInvincible = 0.5f;
     bool isInvincible;
     float invincibleTimer;
+    public Transform Spawnpoint;
+    public GameObject Fireball;
 
 
     //Animations
@@ -75,6 +77,8 @@ public class MarioController : MonoBehaviour
 
         if (isInvincible)
         {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
                 isInvincible = false;
@@ -172,6 +176,16 @@ public class MarioController : MonoBehaviour
             Application.Quit();
         }
 
+        //Fireball
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if(MarioState == 2)
+            {
+                Instantiate(Fireball, Spawnpoint.position, Spawnpoint.rotation);
+            }
+        }
+
         //Move
 
         moveDirection *= marioSpeed;
@@ -207,8 +221,7 @@ public class MarioController : MonoBehaviour
                     Die();
                     LivesController.currentLives -= 1;
                     ChangeAnimationState("Little_Mario_Lose");
-                    Debug.Log("Dead");
-
+                    
                     if (isInvincible)
                         return;
                 }
