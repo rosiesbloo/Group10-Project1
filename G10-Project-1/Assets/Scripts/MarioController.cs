@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MarioController : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class MarioController : MonoBehaviour
     public float marioSpeed;
     public float walkSpeed;
     public float runSpeed;
+    public float loseSpeed = 0f;
     public float jumpHeight;
     public float gravity;
     public float gravityMultiplier;
@@ -38,12 +41,13 @@ public class MarioController : MonoBehaviour
     public Color FPColor;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        MarioState = 0; 
+        MarioState = 0;
     }
 
     // Update is called once per frame
@@ -63,7 +67,7 @@ public class MarioController : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0.01f)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }  
+        }
         else if (Input.GetAxis("Horizontal") < -0.01f)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
@@ -75,7 +79,7 @@ public class MarioController : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
-            
+
         //Grounded
 
         if (isGrounded && velocity.y < 0)
@@ -90,39 +94,75 @@ public class MarioController : MonoBehaviour
             if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift) && !Input.GetButtonUp("Jump"))
             {
                 marioSpeed = walkSpeed;
-                ChangeAnimationState("Little_Mario_Walk");
+
+                if (MarioState == 0 || MarioState == 1)
+                {
+                    ChangeAnimationState("Little_Mario_Walk");
+                }
+                else if (MarioState == 2)
+                {
+                    ChangeAnimationState("Fire_Mario_Walk");
+                }
             }
             else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift) && !Input.GetButtonUp("Jump"))
             {
                 marioSpeed = runSpeed;
-                ChangeAnimationState("Little_Mario_Run");
+                if (MarioState == 0 || MarioState == 1)
+                {
+                    ChangeAnimationState("Little_Mario_Run");
+                }
+                else if (MarioState == 2)
+                {
+                    ChangeAnimationState("Fire_Mario_Run");
+                }
             }
             else if (moveDirection == Vector3.zero && !Input.GetButton("Vertical") && !Input.GetButtonUp("Jump"))
             {
                 marioSpeed = 3;
-                ChangeAnimationState("Little_Mario_Idle");
+                if (MarioState == 0 || MarioState == 1)
+                {
+                    ChangeAnimationState("Little_Mario_Idle");
+                }
+                else if (MarioState == 2)
+                {
+                    ChangeAnimationState("Fire_Mario_Idle");
+                }
             }
-            else if(moveDirection == Vector3.zero && Input.GetButton("Vertical"))
+            else if (moveDirection == Vector3.zero && Input.GetButton("Vertical"))
             {
-                ChangeAnimationState("Little_Mario_Crouch");
+                if (MarioState == 0 || MarioState == 1)
+                {
+                    ChangeAnimationState("Little_Mario_Crouch");
+                }
+                else if (MarioState == 2)
+                {
+                    ChangeAnimationState("Fire_Mario_Crouch");
+                }
             }
 
             if (Input.GetButtonDown("Jump") == true)
             {
                 isJumping = true;
                 velocity.y = Mathf.Sqrt(jumpHeight * -4 * gravity);
-                ChangeAnimationState("Little_Mario_Jump");
+                if (MarioState == 0 || MarioState == 1)
+                {
+                    ChangeAnimationState("Little_Mario_Jump");
+                }
+                else if (MarioState == 2)
+                {
+                    ChangeAnimationState("Fire_Mario_Jump");
+                }
             }
         }
 
 
         //Jumping
-        
+
         if (isJumping && velocity.y > 0 && Input.GetButtonUp("Jump"))
         {
             gravityMultiplier = 15;
         }
-        
+
 
 
         //Escape Key
@@ -148,67 +188,93 @@ public class MarioController : MonoBehaviour
     }
 
     public void ChangeAnimationState(string newState)
-      {
-        if(currentState == newState) return;
+    {
+        if (currentState == newState) return;
 
         animator.Play(newState);
 
         currentState = newState;
-     }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Goomba"))
         {
-            if(isInvincible == false)
+            if (isInvincible == false)
             {
-            if(MarioState == 0)
-            {
-                Debug.Log ("Dead");
-                if (isInvincible)
-                return;
+                if (MarioState == 0)
+                {
+                    Die();
+                    LivesController.currentLives -= 1;
+                    ChangeAnimationState("Little_Mario_Lose");
+                    Debug.Log("Dead");
 
-           
-            }
-            if(MarioState == 1)
-            {
-                MarioController.MarioState = 0;
-                
-            isInvincible = true;
-            invincibleTimer = timeInvincible;
+                    if (isInvincible)
+                        return;
+                }
+                if (MarioState == 1)
+                {
+                    MarioController.MarioState = 0;
+
+                    isInvincible = true;
+                    invincibleTimer = timeInvincible;
 
 
-            }
-            if(MarioState == 2)
-            {
-                MarioController.MarioState = 1;
-                isInvincible = true;
-            invincibleTimer = timeInvincible;
+                }
+                if (MarioState == 2)
+                {
+                    MarioController.MarioState = 0;
+                    isInvincible = true;
+                    invincibleTimer = timeInvincible;
 
-            }
+                }
             }
         }
     }
 
     void MarioStates()
     {
-        if(MarioState == 0)
+        if (MarioState == 0)
         {
             transform.localScale = new Vector3(1.1f, 0.98f, 0f);
-            groundCheckDistance = 0.58001f;
+            groundCheckDistance = 0.58f;
         }
 
-        if(MarioState == 1)
+        if (MarioState == 1)
         {
-            transform.localScale = new Vector3(1.6f, 1.9f, 0);
+            transform.localScale = new Vector3(1.4f, 1.8f, 0);
             groundCheckDistance = 0.95f;
         }
 
-        if(MarioState == 2)
+        if (MarioState == 2)
         {
             gameObject.GetComponent<SpriteRenderer>().material.color = FPColor;
-            transform.localScale = new Vector3(1.6f, 1.9f, 0);
+            transform.localScale = new Vector3(1.4f, 1.8f, 0);
             groundCheckDistance = 0.95f;
         }
+    }
+
+    public void Die()
+    {
+        if (LivesController.currentLives <= 1)
+        {
+            Invoke(nameof(GameOver), 1.5f);
+        }
+        else
+            Invoke(nameof(ReloadScene), 1.5f);
+    }
+
+    public void GameOver()
+    {
+        LivesController.currentLives = 3;
+        ScoreCounter.score = 0;
+        CoinCounter.coin = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

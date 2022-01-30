@@ -24,7 +24,7 @@ public class GoombaController : MonoBehaviour
         rb.velocity = new Vector3(moveX * moveSpeed, rb.velocity.y);
     }
 
-    void OnTriggerEnter (Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Zone"))
         {
