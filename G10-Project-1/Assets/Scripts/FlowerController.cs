@@ -13,5 +13,12 @@ public class FlowerController : MonoBehaviour
             ScoreCounter.score += +1000;
             Destroy(this.gameObject);
         }
+
+        if(other.gameObject.tag == "Player" && MarioController.MarioState == 2)
+        {
+            
+            ScoreCounter.score += +1000;
+            Destroy(this.gameObject);
+        }
     }
 }

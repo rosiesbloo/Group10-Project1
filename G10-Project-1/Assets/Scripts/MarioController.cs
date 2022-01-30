@@ -107,7 +107,7 @@ public class MarioController : MonoBehaviour
 
 
         //Jumping
-
+        
         if (isJumping && velocity.y > 0 && Input.GetButtonUp("Jump"))
         {
             gravityMultiplier = 15;
@@ -144,6 +144,13 @@ public class MarioController : MonoBehaviour
         currentState = newState;
      }
 
+    void OnCollisionEnter(Collision other)
+    {
+        if(gameObject.CompareTag("Box"))
+        {
+            velocity.y = -2f;
+                    }
+    }
     void MarioStates()
     {
         if(MarioState == 0)

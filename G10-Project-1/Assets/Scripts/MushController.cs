@@ -12,7 +12,7 @@ public class MushController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        moveX = -1f;
+        moveX = 1f;
         moveSpeed = 2f;
     }
 

@@ -8,6 +8,12 @@ TagManager:
   - Pipe
   - Zone
   - BrickBlock
+  - QBlock
+  - Life
+  - Red
+  - Star
+  - Box
+  - Special
   layers:
   - Default
   - TransparentFX
