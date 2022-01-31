@@ -177,12 +177,10 @@ public class MarioController : MonoBehaviour
 
         //Fireball
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift) && MarioState == 2)
         {
-            if(MarioState == 2)
-            {
+                ChangeAnimationState("Fire_Mario_Throw");
                 Instantiate(Fireball, Spawnpoint.position, Spawnpoint.rotation);
-            }
         }
 
         //Move
@@ -209,18 +207,18 @@ public class MarioController : MonoBehaviour
         currentState = newState;
     }
 
-    
+
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Death"))
+        if (other.gameObject.CompareTag("Death"))
         {
-              Die();
-                    LivesController.currentLives -= 1;
-                    ChangeAnimationState("Little_Mario_Lose");
-                    
-                    if (isInvincible)
-                        return;
+            Die();
+            LivesController.currentLives -= 1;
+            ChangeAnimationState("Little_Mario_Lose");
+
+            if (isInvincible)
+                return;
         }
 
         if (other.gameObject.CompareTag("Enemy Body"))
@@ -230,9 +228,13 @@ public class MarioController : MonoBehaviour
                 if (MarioState == 0)
                 {
                     Die();
+                    marioSpeed = 0f;
+                    walkSpeed = 0f;
+                    runSpeed = 0f;
+                    jumpHeight = 0f;
                     LivesController.currentLives -= 1;
                     ChangeAnimationState("Little_Mario_Lose");
-                    
+
                     if (isInvincible)
                         return;
                 }
@@ -256,6 +258,96 @@ public class MarioController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "ZoneBreak")
+        {
+            Destroy(GameObject.FindWithTag("Zone"));
+        }
+
+        if (other.gameObject.tag == "FlagPole")
+        {
+            walkSpeed = 0f;
+            runSpeed = 0f;
+            marioSpeed = 0f;
+            jumpHeight = 0f;
+
+            if(MarioState == 0 || MarioState == 1)
+            {
+                ChangeAnimationState("Little_Mario_Win");
+            }
+            
+            if(MarioState == 2)
+            {
+                ChangeAnimationState("Fire_Mario_Win");
+            }
+        }
+
+        if (other.gameObject.tag == "FlagBase")
+        {
+            Destroy(GameObject.FindWithTag("FlagPole"));
+            walkSpeed = 4f;
+            runSpeed = 4f;
+            marioSpeed = 4;
+            jumpHeight = 2.5f;
+        }
+
+        if (other.gameObject.tag == "FiveTPoints")
+        {
+            ScoreCounter.score += 2000;
+            Destroy(GameObject.FindWithTag("EightPounts"));
+            Destroy(GameObject.FindWithTag("FiveTPoints"));
+            Destroy(GameObject.FindWithTag("TwoTPoints"));
+            Destroy(GameObject.FindWithTag("FourPoints"));
+            Destroy(GameObject.FindWithTag("OnePoint"));
+        }
+
+        if (other.gameObject.tag == "TwoTPoints")
+        {
+            ScoreCounter.score += 5000;
+            Destroy(GameObject.FindWithTag("EightPounts"));
+            Destroy(GameObject.FindWithTag("FiveTPoints"));
+            Destroy(GameObject.FindWithTag("TwoTPoints"));
+            Destroy(GameObject.FindWithTag("FourPoints"));
+            Destroy(GameObject.FindWithTag("OnePoint"));
+        }
+
+        if (other.gameObject.tag == "EightPounts")
+        {
+            ScoreCounter.score += 800;
+            Destroy(GameObject.FindWithTag("EightPounts"));
+            Destroy(GameObject.FindWithTag("FiveTPoints"));
+            Destroy(GameObject.FindWithTag("TwoTPoints"));
+            Destroy(GameObject.FindWithTag("FourPoints"));
+            Destroy(GameObject.FindWithTag("OnePoint"));
+        }
+
+        if (other.gameObject.tag == "FourPoints")
+        {
+            ScoreCounter.score += 400;
+            Destroy(GameObject.FindWithTag("EightPounts"));
+            Destroy(GameObject.FindWithTag("FiveTPoints"));
+            Destroy(GameObject.FindWithTag("TwoTPoints"));
+            Destroy(GameObject.FindWithTag("FourPoints"));
+            Destroy(GameObject.FindWithTag("OnePoint"));
+        }
+
+        if (other.gameObject.tag == "OnePoint")
+        {
+            ScoreCounter.score += 100;
+            Destroy(GameObject.FindWithTag("EightPounts"));
+            Destroy(GameObject.FindWithTag("FiveTPoints"));
+            Destroy(GameObject.FindWithTag("TwoTPoints"));
+            Destroy(GameObject.FindWithTag("FourPoints"));
+            Destroy(GameObject.FindWithTag("OnePoint"));
+        }
+        
+        if(other.gameObject.tag == "Winner")
+        {
+            WinGame();
+        }
+
+    }
 
     void MarioStates()
     {
@@ -279,6 +371,11 @@ public class MarioController : MonoBehaviour
         }
     }
 
+    void WinGame()
+    {
+        Invoke(nameof(YouWin), 0.5f);
+    }
+
     public void Die()
     {
         if (LivesController.currentLives <= 1)
@@ -300,6 +397,13 @@ public class MarioController : MonoBehaviour
     void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    void YouWin()
+    {
+        LivesController.currentLives = 3;
+        ScoreCounter.score = 0;
+        CoinCounter.coin = 0;
+        SceneManager.LoadScene("PlayAgain");
     }
 
 }

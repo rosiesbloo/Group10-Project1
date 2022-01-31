@@ -19,6 +19,16 @@ TagManager:
   - Enemy Body
   - Enemy Head
   - Death
+  - FlagPole
+  - FlagBase
+  - FivePoints
+  - TwoTPoints
+  - FiveTPoints
+  - EightPounts
+  - FourPoints
+  - OnePoint
+  - ZoneBreak
+  - Winner
   layers:
   - Default
   - TransparentFX
