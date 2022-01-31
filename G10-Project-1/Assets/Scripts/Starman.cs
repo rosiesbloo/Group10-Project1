@@ -32,10 +32,15 @@ public class Starman : MonoBehaviour
                         Destroy(this.gameObject);
                 }
 
-            if (collision.gameObject.tag == "Pipe")
-                {
-                    moveX *= -1f;
-                }
+           
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+             moveX *= -1f;
+    }
     }
 
 }

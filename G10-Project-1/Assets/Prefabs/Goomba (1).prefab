@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 438614913}
   m_Layer: 0
   m_Name: Goomba (1)
-  m_TagString: Goomba
+  m_TagString: Enemy Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 6170611046119515248}
   m_Layer: 0
   m_Name: Goomba
-  m_TagString: Goomba
+  m_TagString: Enemy Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

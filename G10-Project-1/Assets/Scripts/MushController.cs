@@ -37,7 +37,7 @@ public class MushController : MonoBehaviour
             Destroy(this.gameObject);
                 }
 
-            if (collision.gameObject.tag == "Pipe")
+            if (collision.gameObject.tag == "Wall")
                 {
                     moveX *= -1f;
                 }

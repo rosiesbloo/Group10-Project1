@@ -77,8 +77,7 @@ public class MarioController : MonoBehaviour
 
         if (isInvincible)
         {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
-
+            
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
                 isInvincible = false;
@@ -210,9 +209,21 @@ public class MarioController : MonoBehaviour
         currentState = newState;
     }
 
+    
+
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Goomba"))
+        if(other.gameObject.CompareTag("Death"))
+        {
+              Die();
+                    LivesController.currentLives -= 1;
+                    ChangeAnimationState("Little_Mario_Lose");
+                    
+                    if (isInvincible)
+                        return;
+        }
+
+        if (other.gameObject.CompareTag("Enemy Body"))
         {
             if (isInvincible == false)
             {
@@ -244,6 +255,7 @@ public class MarioController : MonoBehaviour
             }
         }
     }
+
 
     void MarioStates()
     {

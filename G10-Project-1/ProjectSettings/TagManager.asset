@@ -15,6 +15,10 @@ TagManager:
   - Box
   - Special
   - Fireball
+  - Wall
+  - Enemy Body
+  - Enemy Head
+  - Death
   layers:
   - Default
   - TransparentFX

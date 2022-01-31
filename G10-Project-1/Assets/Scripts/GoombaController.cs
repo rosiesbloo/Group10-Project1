@@ -26,12 +26,20 @@ public class GoombaController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Death"))
+        {
+            Destroy(gameObject);
+        }
 
         if (other.CompareTag("Zone"))
         {
         moveX = -1f;
         moveSpeed =2f;
         }
+        if (other.CompareTag("Wall"))
+        {
+             moveX *= -1f;
+    }
 
         if (other.CompareTag("Player"))
         {
@@ -41,20 +49,24 @@ public class GoombaController : MonoBehaviour
             {
           
             }
-
+            gameObject.tag = "Enemy Head";
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
+            moveX = 0f;
+            gameObject.transform.localScale += new Vector3(0, -.5f, 0);
             ScoreCounter.score += +100;
-            Destroy(gameObject, 0f);
+            Destroy(gameObject, 1f);
         }
 
     }
     
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Pipe")
+        if (collision.gameObject.tag == "Wall")
         {
             moveX *= -1f;
         }
-        else if (collision.gameObject.tag == "Goomba")
+        else if (collision.gameObject.tag == "Enemy Body")
         {
             moveX *= -1f;
         }
@@ -64,5 +76,6 @@ public class GoombaController : MonoBehaviour
             ScoreCounter.score += +100;
             Destroy(gameObject, 0f);
         }
+        
     }
 }

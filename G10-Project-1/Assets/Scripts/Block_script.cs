@@ -54,7 +54,7 @@ public class Block_script : MonoBehaviour
             if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
             {
                
-                       myAnimatorController.SetBool("IsHit", true);
+                      
                        Destroy(gameObject,0.25f);
             }
             if(MarioController.MarioState == 0)

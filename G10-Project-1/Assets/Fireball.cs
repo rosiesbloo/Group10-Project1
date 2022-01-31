@@ -24,7 +24,7 @@ public class Fireball : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Pipe") || other.gameObject.CompareTag("Goomba")|| other.gameObject.CompareTag("Koopa"))
+        if(other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Enemy Body"))
         {
             Destroy(gameObject,0.01f);
         }

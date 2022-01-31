@@ -28,11 +28,11 @@ public class Life_Mush : MonoBehaviour
                 
                 {
 
-                       
+                       LivesController.currentLives += 1;
                         Destroy(this.gameObject);
                 }
 
-            if (collision.gameObject.tag == "Pipe")
+            if (collision.gameObject.tag == "Wall")
                 {
                     moveX *= -1f;
                 }
