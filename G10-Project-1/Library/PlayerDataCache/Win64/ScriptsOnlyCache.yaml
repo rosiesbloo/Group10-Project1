@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - FlowerController
     - GOController
     - GoombaController
+    - KoopaController
     - Life_Mush
     - LivesController
     - MarioController
@@ -17,12 +18,14 @@ ScriptsOnlyBuild:
     - PAController
     - PSController
     - ScoreCounter
+    - Shell_script
     - Starman
     - TimerController
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
@@ -66,19 +69,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1578}
     - Class: 114
-      Script: {instanceID: 2290}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2712}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2882}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 3094}
+      Script: {instanceID: 3096}
     - Class: 114
-      Script: {instanceID: 3336}
+      Script: {instanceID: 3338}
     - Class: 114
-      Script: {instanceID: 3458}
+      Script: {instanceID: 3460}
     - Class: 114
-      Script: {instanceID: 4688}
+      Script: {instanceID: 4690}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -137,45 +140,49 @@ ScriptsOnlyBuild:
     - Class: 111
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1900}
+      Script: {instanceID: 1902}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2218}
     - Class: 114
-      Script: {instanceID: 2242}
-    - Class: 114
-      Script: {instanceID: 2288}
+      Script: {instanceID: 2244}
     - Class: 114
       Script: {instanceID: 2290}
     - Class: 114
-      Script: {instanceID: 2496}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2712}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 2882}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2900}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 3094}
+      Script: {instanceID: 2902}
     - Class: 114
-      Script: {instanceID: 3164}
+      Script: {instanceID: 3088}
     - Class: 114
-      Script: {instanceID: 3252}
+      Script: {instanceID: 3096}
     - Class: 114
-      Script: {instanceID: 3336}
+      Script: {instanceID: 3166}
     - Class: 114
-      Script: {instanceID: 3524}
+      Script: {instanceID: 3254}
     - Class: 114
-      Script: {instanceID: 4588}
+      Script: {instanceID: 3338}
     - Class: 114
-      Script: {instanceID: 4654}
+      Script: {instanceID: 3526}
     - Class: 114
-      Script: {instanceID: 5030}
+      Script: {instanceID: 4590}
     - Class: 114
-      Script: {instanceID: 5142}
+      Script: {instanceID: 4656}
     - Class: 114
-      Script: {instanceID: 5512}
+      Script: {instanceID: 4912}
     - Class: 114
-      Script: {instanceID: 5672}
+      Script: {instanceID: 5034}
+    - Class: 114
+      Script: {instanceID: 5146}
+    - Class: 114
+      Script: {instanceID: 5516}
+    - Class: 114
+      Script: {instanceID: 5676}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -232,19 +239,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1578}
     - Class: 114
-      Script: {instanceID: 1860}
+      Script: {instanceID: 1862}
     - Class: 114
-      Script: {instanceID: 2290}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2712}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2882}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 3094}
+      Script: {instanceID: 3096}
     - Class: 114
-      Script: {instanceID: 3336}
+      Script: {instanceID: 3338}
     - Class: 114
-      Script: {instanceID: 3458}
+      Script: {instanceID: 3460}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -283,19 +290,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1578}
     - Class: 114
-      Script: {instanceID: 1984}
+      Script: {instanceID: 1986}
     - Class: 114
-      Script: {instanceID: 2290}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2712}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2882}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 3094}
+      Script: {instanceID: 3096}
     - Class: 114
-      Script: {instanceID: 3336}
+      Script: {instanceID: 3338}
     - Class: 114
-      Script: {instanceID: 3458}
+      Script: {instanceID: 3460}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -343,6 +350,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 81cf4423bf963ed55801d27bf62a2b26
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Teleport
   - hash:
       serializedVersion: 2
       Hash: 71b711096c6c32621c1d4c02310898b7
@@ -639,7 +652,7 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: f9fe2130321215dfa43953e32576f300
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: KoopaController
@@ -1083,6 +1096,12 @@ ScriptsOnlyBuild:
     className: CinemachineHardLockToTarget
   - hash:
       serializedVersion: 2
+      Hash: cc5664e0d89871418ac0fed488537cdc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Shell_script
+  - hash:
+      serializedVersion: 2
       Hash: af56f77a30c1a2da1680c736a6f5c6e8
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -1167,7 +1186,7 @@ ScriptsOnlyBuild:
     className: BufferManager
   - hash:
       serializedVersion: 2
-      Hash: 1717ed6e52b561ceaaf4774f90d03808
+      Hash: 6009733947a1d9a9287a8d7e1a531cba
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MarioController
@@ -1231,4 +1250,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Main.unity
   - Assets/Scenes/GameOver.unity
   - Assets/Scenes/PlayAgain.unity
-  playerPath: C:/Users/ghora/Downloads/P1_Test_Builds/WinAnim_Test/G10-Project-1.exe
+  playerPath: C:/Users/switt/Desktop/Mario Project/Unity/Builds/G10-Project-1.exe
