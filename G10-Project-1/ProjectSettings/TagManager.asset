@@ -29,6 +29,8 @@ TagManager:
   - OnePoint
   - ZoneBreak
   - Winner
+  - UGD
+  - UGU
   layers:
   - Default
   - TransparentFX

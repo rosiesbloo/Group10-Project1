@@ -35,6 +35,7 @@ public class Block_script : MonoBehaviour
              if(hasCoin == true && hasObject == false)
             {
                 coinBurst.Play();
+                CoinCounter.coin += 1;
                 ScoreCounter.score += +200;
                 
                 hasCoin = false;

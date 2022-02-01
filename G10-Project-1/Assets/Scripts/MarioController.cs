@@ -19,6 +19,15 @@ public class MarioController : MonoBehaviour
     float invincibleTimer;
     public Transform Spawnpoint;
     public GameObject Fireball;
+    public Transform teleportTarget1;
+    public Transform teleportTarget2;
+
+    public Camera camera1;
+    public Camera camera2;
+
+     public bool Underground;
+     public bool Tube;
+
 
 
     //Animations
@@ -41,6 +50,7 @@ public class MarioController : MonoBehaviour
     //Player States
     public static int MarioState;
     public Color FPColor;
+    
 
 
 
@@ -50,6 +60,9 @@ public class MarioController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         MarioState = 0;
+        Tube = false;
+        Underground = false;
+              
     }
 
     // Update is called once per frame
@@ -133,12 +146,15 @@ public class MarioController : MonoBehaviour
             }
             else if (moveDirection == Vector3.zero && Input.GetButton("Vertical"))
             {
+
                 if (MarioState == 0 || MarioState == 1)
                 {
+                    
                     ChangeAnimationState("Little_Mario_Crouch");
                 }
                 else if (MarioState == 2)
                 {
+                    
                     ChangeAnimationState("Fire_Mario_Crouch");
                 }
             }
@@ -156,6 +172,27 @@ public class MarioController : MonoBehaviour
                     ChangeAnimationState("Fire_Mario_Jump");
                 }
             }
+            if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+               if(Tube == true)
+               {
+                   Underground = true;
+                   transform.position = teleportTarget1.transform.position;
+                  
+               }
+            }
+
+            if(Underground == true)
+            {
+              camera1.enabled = false;
+              camera2.enabled = true;
+            }
+               if(Underground == false)
+            {
+              camera1.enabled = true;
+              camera2.enabled = false;
+            }
+           
         }
 
 
@@ -221,6 +258,20 @@ public class MarioController : MonoBehaviour
                 return;
         }
 
+    if(other.gameObject.CompareTag("UGD"))
+        {
+            Tube = true;
+
+                }
+
+
+        if(other.gameObject.CompareTag("UGU"))
+        {
+            Underground = false;
+            
+          transform.position = teleportTarget2.transform.position;
+        }
+
         if (other.gameObject.CompareTag("Enemy Body"))
         {
             if (isInvincible == false)
@@ -260,6 +311,8 @@ public class MarioController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+       
+
         if(other.gameObject.tag == "ZoneBreak")
         {
             Destroy(GameObject.FindWithTag("Zone"));

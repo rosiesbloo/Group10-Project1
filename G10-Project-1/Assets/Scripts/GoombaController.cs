@@ -26,10 +26,7 @@ public class GoombaController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Death"))
-        {
-            Destroy(gameObject);
-        }
+        
 
         if (other.CompareTag("Zone"))
         {
@@ -70,6 +67,12 @@ public class GoombaController : MonoBehaviour
         {
             moveX *= -1f;
         }
+
+        if(collision.gameObject.tag == "Pipe")
+    {
+        rb.detectCollisions = false;
+        Destroy(gameObject, 0.5f);
+    }
 
         if(collision.gameObject.tag == "Fireball")
         {
