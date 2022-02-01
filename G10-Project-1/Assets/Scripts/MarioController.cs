@@ -15,8 +15,11 @@ public class MarioController : MonoBehaviour
     public float gravity;
     public float gravityMultiplier;
     public float timeInvincible = 0.5f;
+        public float timeStarman = 10f;
     bool isInvincible;
+        bool isStarman;
     float invincibleTimer;
+        float starmanTimer;
     public Transform Spawnpoint;
     public GameObject Fireball;
     public Transform teleportTarget1;
@@ -28,7 +31,7 @@ public class MarioController : MonoBehaviour
      public bool Underground;
      public bool Tube;
 
-     public bool Starman;
+   
 
 
 
@@ -92,10 +95,17 @@ public class MarioController : MonoBehaviour
 
         if (isInvincible)
         {
-            
+        
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
                 isInvincible = false;
+        }
+
+        if (isStarman)
+        {
+                  starmanTimer -= Time.deltaTime;
+            if (starmanTimer < 0)
+            isStarman = false;
         }
 
         //Grounded
@@ -276,11 +286,14 @@ public class MarioController : MonoBehaviour
 
         if(other.gameObject.CompareTag("Star"))
         {
-            
+                isStarman = true;
+            starmanTimer = timeStarman;
         }
 
         if (other.gameObject.CompareTag("Enemy Body") || other.gameObject.CompareTag("Shell"))
         {
+            if(isStarman == false)
+            {
             if (isInvincible == false)
             {
                 if (MarioState == 0)
@@ -313,7 +326,9 @@ public class MarioController : MonoBehaviour
 
                 }
             }
+            }
         }
+        
     }
 
     void OnTriggerEnter(Collider other)
