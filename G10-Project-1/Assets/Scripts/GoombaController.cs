@@ -7,7 +7,7 @@ public class GoombaController : MonoBehaviour
     public float moveX;
     public float moveSpeed;
     private Rigidbody rb;
-
+    public AudioSource goomaHitSound;
 
 
     // Start is called before the first frame update
@@ -46,6 +46,7 @@ public class GoombaController : MonoBehaviour
             {
           
             }
+            goomaHitSound.Play();
             gameObject.tag = "Enemy Head";
             rb.isKinematic = true;
             rb.detectCollisions = false;
@@ -76,13 +77,15 @@ public class GoombaController : MonoBehaviour
 
         if(collision.gameObject.tag == "Fireball")
         {
+            goomaHitSound.Play();
             ScoreCounter.score += +100;
-            Destroy(gameObject, 0f);
+            Destroy(gameObject, .1f);
         }
           if(collision.gameObject.tag == "Shell")
         {
+            goomaHitSound.Play();
             ScoreCounter.score += +100;
-            Destroy(gameObject, 0f);
+            Destroy(gameObject, .1f);
         }
 
         

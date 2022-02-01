@@ -20,6 +20,11 @@ public class Block_script : MonoBehaviour
         public ParticleSystem coinBurst;
     [SerializeField] private Animator myAnimatorController;
 
+    public AudioSource coinCollect;
+    public AudioSource blockBreakSound;
+    public AudioSource blockBounce;
+    public AudioSource itemSpawnSound;
+
     void start ()
     {
         coinCount = 0;
@@ -30,43 +35,43 @@ public class Block_script : MonoBehaviour
  
         if (other.CompareTag("Player"))
         {
-    if(isbrick == false && isQuestion == true)
-            {
-             if(hasCoin == true && hasObject == false)
-            {
-                coinBurst.Play();
-                CoinCounter.coin += 1;
-                ScoreCounter.score += +200;
+             if(isbrick == false && isQuestion == true)
+                {
+                 if(hasCoin == true && hasObject == false)
+                {
+                    coinCollect.Play();
+                    coinBurst.Play();
+                    CoinCounter.coin += 1;
+                    ScoreCounter.score += +200;
                 
-                hasCoin = false;
+                    hasCoin = false;
 
             
-            if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
-            {
-                
-                       myAnimatorController.SetBool("IsHit", true);
-                    Destroy(gameObject,0.25f);
-            }
+                    if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
+                    {
+                        myAnimatorController.SetBool("IsHit", true);
+                        Destroy(gameObject,0.5f);
+                    }
             
-            }
+                }
 
              if(hasCoin == false && hasObject == true)
-            {
-            if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
-            {
-               
-                      
-                       Destroy(gameObject,0.25f);
-            }
-            if(MarioController.MarioState == 0)
-            {
-                 Instantiate(Prefab1, Spawnpoint.position, Spawnpoint.rotation);
-            }
-            if(MarioController.MarioState == 1 || MarioController.MarioState == 2)
-            {
-                 Instantiate(Prefab2, Spawnpoint.position, Spawnpoint.rotation);
-            }
-            }
+                {
+                    if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
+                        {
+                         Destroy(gameObject,0.5f);
+                        }
+                    if(MarioController.MarioState == 0)
+                        {
+                             itemSpawnSound.Play();
+                             Instantiate(Prefab1, Spawnpoint.position, Spawnpoint.rotation);
+                        }
+                    if(MarioController.MarioState == 1 || MarioController.MarioState == 2)
+                        {
+                             itemSpawnSound.Play();
+                             Instantiate(Prefab2, Spawnpoint.position, Spawnpoint.rotation);
+                        }
+                }
 
             }
             
@@ -75,44 +80,46 @@ public class Block_script : MonoBehaviour
             {
             if(hasCoin == true && hasObject == false)
             {
+                coinCollect.Play();
                 coinBurst.Play();
                 coinCount += 1;
-             ScoreCounter.score += +200;
+                ScoreCounter.score += +200;
 
-            
-            if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
-            {
-                       myAnimatorController.SetBool("IsHit", true);
-            }
-            if(coinCount == 10)
-            {
+                    if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
+                    {
+                               myAnimatorController.SetBool("IsHit", true);
+                    }
+                    if(coinCount == 10)
+                    {
                        
-                       transform.parent.GetComponent<Renderer>().material = Mat;
-                        Destroy(gameObject,0.25f);
-            }
+                               transform.parent.GetComponent<Renderer>().material = Mat;
+                                Destroy(gameObject,0.5f);
+                    }
             }
 
              if(hasCoin == false && hasObject == false)
             {
             if(MarioController.MarioState == 0)
             {
+                       blockBounce.Play();
                        myAnimatorController.SetBool("IsHit", true);
             }
             if(MarioController.MarioState == 1 || MarioController.MarioState == 2)
             {
+                       blockBreakSound.Play();
                        particleBurst.Play();
                        ScoreCounter.score += +50;
-                        Destroy(transform.parent.gameObject,0.25f);
+                       Destroy(transform.parent.gameObject,0.25f);
             }
             }
             if(hasCoin == false && hasObject == true)
             {
             
             if(MarioController.MarioState == 0 || MarioController.MarioState == 1 || MarioController.MarioState == 2)
-            {
+            {                
                        Instantiate(Prefab1, Spawnpoint.position, Spawnpoint.rotation);
                        transform.parent.GetComponent<Renderer>().material = Mat;
-                        Destroy(gameObject,0);
+                       Destroy(gameObject,0);
                        
             }
             }

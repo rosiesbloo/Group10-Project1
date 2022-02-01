@@ -32,6 +32,9 @@ TagManager:
   - UGD
   - UGU
   - Shell
+  - Mushroom
+  - OneUp
+  - FireFlower
   layers:
   - Default
   - TransparentFX

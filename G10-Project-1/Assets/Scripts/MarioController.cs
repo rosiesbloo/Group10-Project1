@@ -15,25 +15,32 @@ public class MarioController : MonoBehaviour
     public float gravity;
     public float gravityMultiplier;
     public float timeInvincible = 0.5f;
-        public float timeStarman = 10f;
+    public float timeStarman = 10f;
     bool isInvincible;
-        bool isStarman;
+    bool isStarman;
     float invincibleTimer;
-        float starmanTimer;
+    float starmanTimer;
     public Transform Spawnpoint;
     public GameObject Fireball;
     public Transform teleportTarget1;
     public Transform teleportTarget2;
 
+    //Camera
     public Camera camera1;
     public Camera camera2;
 
-     public bool Underground;
-     public bool Tube;
+    //Underground
+    public bool Underground;
+    public bool Tube;
 
-   
-
-
+    //Music and Sound Effects 
+    public AudioSource mainMusic;
+    public AudioSource hurryMusic;
+    public AudioSource winMusic;
+    public AudioSource dieMusic;
+    public AudioSource jumpSound;
+    public AudioSource starmanMusic;
+    public AudioSource enterPipe;
 
     //Animations
     public Animator animator;
@@ -51,10 +58,12 @@ public class MarioController : MonoBehaviour
 
     //Get Component
     private CharacterController controller;
+    Collider collider;
 
     //Player States
     public static int MarioState;
     public Color FPColor;
+    public Color RColor;
     
 
 
@@ -64,6 +73,7 @@ public class MarioController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        collider = GetComponent<Collider>();
         MarioState = 0;
         Tube = false;
         Underground = false;
@@ -98,14 +108,19 @@ public class MarioController : MonoBehaviour
         
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
+            {
                 isInvincible = false;
+            }        
         }
 
         if (isStarman)
         {
-                  starmanTimer -= Time.deltaTime;
+            gameObject.GetComponent<SpriteRenderer>().material.color = FPColor;
+            starmanTimer -= Time.deltaTime;
             if (starmanTimer < 0)
-            isStarman = false;
+            {
+                isStarman = false;
+            }
         }
 
         //Grounded
@@ -131,6 +146,10 @@ public class MarioController : MonoBehaviour
                 {
                     ChangeAnimationState("Fire_Mario_Walk");
                 }
+                else if (isStarman)
+                {
+                    ChangeAnimationState("Starman_Run");
+                }
             }
             else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift) && !Input.GetButtonUp("Jump"))
             {
@@ -143,6 +162,27 @@ public class MarioController : MonoBehaviour
                 {
                     ChangeAnimationState("Fire_Mario_Run");
                 }
+                else if (isStarman)
+                {
+                    ChangeAnimationState("Starman_Run");
+                }
+            }
+            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.RightShift) && !Input.GetButtonUp("Jump"))
+            {
+                marioSpeed = runSpeed;
+
+                if (MarioState == 0 || MarioState == 1)
+                {
+                    ChangeAnimationState("Little_Mario_Run");
+                }
+                else if (MarioState == 2)
+                {
+                    ChangeAnimationState("Fire_Mario_Run");
+                }
+                else if (isStarman)
+                {
+                    ChangeAnimationState("Starman_Run");
+                }
             }
             else if (moveDirection == Vector3.zero && !Input.GetButton("Vertical") && !Input.GetButtonUp("Jump"))
             {
@@ -154,6 +194,10 @@ public class MarioController : MonoBehaviour
                 else if (MarioState == 2)
                 {
                     ChangeAnimationState("Fire_Mario_Idle");
+                }
+                else if (isStarman)
+                {
+                    ChangeAnimationState("Starman_Idle");
                 }
             }
             else if (moveDirection == Vector3.zero && Input.GetButton("Vertical"))
@@ -169,10 +213,15 @@ public class MarioController : MonoBehaviour
                     
                     ChangeAnimationState("Fire_Mario_Crouch");
                 }
+                else if (isStarman)
+                {
+                    ChangeAnimationState("Starman_Crouch");
+                }
             }
 
             if (Input.GetButtonDown("Jump") == true)
             {
+                jumpSound.Play();
                 isJumping = true;
                 velocity.y = Mathf.Sqrt(jumpHeight * -4 * gravity);
                 if (MarioState == 0 || MarioState == 1)
@@ -183,14 +232,19 @@ public class MarioController : MonoBehaviour
                 {
                     ChangeAnimationState("Fire_Mario_Jump");
                 }
+                else if (isStarman)
+                {
+                    ChangeAnimationState("Starman_Jump");
+                }
             }
+
             if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
                if(Tube == true)
                {
+                   enterPipe.Play();
                    Underground = true;
                    transform.position = teleportTarget1.transform.position;
-                  
                }
             }
 
@@ -226,10 +280,10 @@ public class MarioController : MonoBehaviour
 
         //Fireball
 
-        if(Input.GetKeyDown(KeyCode.LeftShift) && MarioState == 2)
+        if(Input.GetKeyDown(KeyCode.LeftShift) && MarioState == 2 || Input.GetKeyDown(KeyCode.Z) && MarioState == 2 || Input.GetKeyDown(KeyCode.RightShift) && MarioState == 2)
         {
-                ChangeAnimationState("Fire_Mario_Throw");
-                Instantiate(Fireball, Spawnpoint.position, Spawnpoint.rotation);
+            ChangeAnimationState("Fire_Mario_Throw");
+            Instantiate(Fireball, Spawnpoint.position, Spawnpoint.rotation);
         }
 
         //Move
@@ -270,25 +324,28 @@ public class MarioController : MonoBehaviour
                 return;
         }
 
-    if(other.gameObject.CompareTag("UGD"))
-        {
-            Tube = true;
-
-                }
+        if(other.gameObject.CompareTag("UGD"))
+            {
+                Tube = true;
+            }
 
 
         if(other.gameObject.CompareTag("UGU"))
-        {
-            Underground = false;
-            
-          transform.position = teleportTarget2.transform.position;
-        }
+            {
+              enterPipe.Play();
+              Underground = false;
+              Tube = false;
+              transform.position = teleportTarget2.transform.position;
+            }
 
         if(other.gameObject.CompareTag("Star"))
-        {
-                isStarman = true;
+            {
+            starmanMusic.Play();
+            mainMusic.Stop();
+            hurryMusic.Stop();
+            isStarman = true;
             starmanTimer = timeStarman;
-        }
+            }
 
         if (other.gameObject.CompareTag("Enemy Body") || other.gameObject.CompareTag("Shell"))
         {
@@ -298,6 +355,7 @@ public class MarioController : MonoBehaviour
             {
                 if (MarioState == 0)
                 {
+                    collider.enabled = false;
                     Die();
                     marioSpeed = 0f;
                     walkSpeed = 0f;
@@ -326,7 +384,7 @@ public class MarioController : MonoBehaviour
 
                 }
             }
-            }
+         }
         }
         
     }
@@ -342,6 +400,8 @@ public class MarioController : MonoBehaviour
 
         if (other.gameObject.tag == "FlagPole")
         {
+            winMusic.Play();
+            mainMusic.Stop();
             walkSpeed = 0f;
             runSpeed = 0f;
             marioSpeed = 0f;
@@ -361,6 +421,15 @@ public class MarioController : MonoBehaviour
         if (other.gameObject.tag == "FlagBase")
         {
             Destroy(GameObject.FindWithTag("FlagPole"));
+            if(MarioState == 0 || MarioState == 1)
+            {
+                ChangeAnimationState("Little_Mario_Idle");
+            }
+            if(MarioState == 2)
+            {
+                ChangeAnimationState("Fire_Mario_Idle");
+            }
+
             walkSpeed = 4f;
             runSpeed = 4f;
             marioSpeed = 4;
@@ -416,8 +485,8 @@ public class MarioController : MonoBehaviour
             Destroy(GameObject.FindWithTag("FourPoints"));
             Destroy(GameObject.FindWithTag("OnePoint"));
         }
-        
-        if(other.gameObject.tag == "Winner")
+
+            if (other.gameObject.tag == "Winner")
         {
             WinGame();
         }
@@ -440,10 +509,10 @@ public class MarioController : MonoBehaviour
 
         if (MarioState == 2)
         {
-            gameObject.GetComponent<SpriteRenderer>().material.color = FPColor;
             transform.localScale = new Vector3(1.4f, 1.8f, 0);
             groundCheckDistance = 0.95f;
         }
+
     }
 
     void WinGame()
@@ -453,12 +522,14 @@ public class MarioController : MonoBehaviour
 
     public void Die()
     {
+        dieMusic.Play();
+        mainMusic.Stop();
         if (LivesController.currentLives <= 1)
         {
-            Invoke(nameof(GameOver), 1.5f);
+            Invoke(nameof(GameOver), 2.6f);
         }
         else
-            Invoke(nameof(ReloadScene), 1.5f);
+            Invoke(nameof(ReloadScene), 2.6f);
     }
 
     public void GameOver()

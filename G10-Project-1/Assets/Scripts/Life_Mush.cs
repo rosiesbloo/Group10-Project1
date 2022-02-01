@@ -27,9 +27,8 @@ public class Life_Mush : MonoBehaviour
             if(collision.gameObject.tag == "Player")
                 
                 {
-
                        LivesController.currentLives += 1;
-                        Destroy(this.gameObject);
+                       Destroy(this.gameObject);
                 }
 
             if (collision.gameObject.tag == "Wall")
