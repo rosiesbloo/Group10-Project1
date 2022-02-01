@@ -163,11 +163,12 @@ GameObject:
   - component: {fileID: 3893788564965026252}
   - component: {fileID: 3411698613235334402}
   - component: {fileID: 6542103741055103230}
-  - component: {fileID: 7420689177524257951}
   - component: {fileID: 4806321291455216070}
+  - component: {fileID: 1697693714}
+  - component: {fileID: 1697693716}
   m_Layer: 0
   m_Name: Coopa
-  m_TagString: Goomba
+  m_TagString: Enemy Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,20 +219,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveX: 0
   moveSpeed: 0
---- !u!64 &7420689177524257951
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414183756836352886}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3464568506637482736, guid: 0a3c0525877d7b74ebd0dd418d2db37d, type: 3}
 --- !u!54 &4806321291455216070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,6 +235,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!136 &1697693714
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414183756836352886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.45574933
+  m_Height: 1.7523398
+  m_Direction: 1
+  m_Center: {x: -1.8740435e-16, y: 1.3276484, z: -0.48681247}
+--- !u!65 &1697693716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414183756836352886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.7253528, z: 1.16925}
+  m_Center: {x: -7.4880423e-16, y: 0.8462446, z: -0.44730747}
 --- !u!1 &4790780164324950045
 GameObject:
   m_ObjectHideFlags: 0

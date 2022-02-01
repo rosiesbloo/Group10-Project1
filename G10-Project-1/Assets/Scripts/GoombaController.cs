@@ -79,6 +79,12 @@ public class GoombaController : MonoBehaviour
             ScoreCounter.score += +100;
             Destroy(gameObject, 0f);
         }
+          if(collision.gameObject.tag == "Shell")
+        {
+            ScoreCounter.score += +100;
+            Destroy(gameObject, 0f);
+        }
+
         
     }
 }

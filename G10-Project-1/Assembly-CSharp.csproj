@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Teleport.cs" />
      <Compile Include="Assets\Scripts\PAController.cs" />
      <Compile Include="Assets\Scripts\Starman.cs" />
      <Compile Include="Assets\Scripts\PSController.cs" />
@@ -55,7 +56,7 @@
      <Compile Include="Assets\Scripts\CoinCounter.cs" />
      <Compile Include="Assets\Scripts\MarioController.cs" />
      <Compile Include="Assets\Scripts\Fireball.cs" />
-     <Compile Include="Assets\Scripts\Teleport.cs" />
+     <Compile Include="Assets\Scripts\Shell_script.cs" />
      <None Include="Assets\Allegorithmic\Plugins\EULA.txt" />
      <None Include="Assets\Allegorithmic\Plugins\engine_build_info.txt" />
     <Reference Include="UnityEngine">

@@ -28,6 +28,8 @@ public class MarioController : MonoBehaviour
      public bool Underground;
      public bool Tube;
 
+     public bool Starman;
+
 
 
     //Animations
@@ -272,7 +274,12 @@ public class MarioController : MonoBehaviour
           transform.position = teleportTarget2.transform.position;
         }
 
-        if (other.gameObject.CompareTag("Enemy Body"))
+        if(other.gameObject.CompareTag("Star"))
+        {
+            
+        }
+
+        if (other.gameObject.CompareTag("Enemy Body") || other.gameObject.CompareTag("Shell"))
         {
             if (isInvincible == false)
             {
