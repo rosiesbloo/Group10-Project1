@@ -39,7 +39,7 @@ public class Shell_script : MonoBehaviour
         {
         rb.isKinematic = false;
         moveX = -1f;
-        moveSpeed = -8f;
+        moveSpeed = -10f;
         }
     }
     

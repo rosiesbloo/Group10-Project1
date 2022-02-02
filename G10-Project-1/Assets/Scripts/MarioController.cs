@@ -20,8 +20,11 @@ public class MarioController : MonoBehaviour
     bool isStarman;
     float invincibleTimer;
     float starmanTimer;
-    public Transform Spawnpoint;
-    public GameObject Fireball;
+    public Transform Spawnpoint1;
+     public Transform Spawnpoint2;
+    public GameObject Fireball1;
+    public GameObject Fireball2;
+    
     public Transform teleportTarget1;
     public Transform teleportTarget2;
 
@@ -282,8 +285,17 @@ public class MarioController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && MarioState == 2 || Input.GetKeyDown(KeyCode.Z) && MarioState == 2 || Input.GetKeyDown(KeyCode.RightShift) && MarioState == 2)
         {
+            if( gameObject.GetComponent<SpriteRenderer>().flipX == false)
+            {
             ChangeAnimationState("Fire_Mario_Throw");
-            Instantiate(Fireball, Spawnpoint.position, Spawnpoint.rotation);
+            Instantiate(Fireball1, Spawnpoint1.position, Spawnpoint1.rotation);
+            }
+
+            if( gameObject.GetComponent<SpriteRenderer>().flipX == true)
+            {
+            ChangeAnimationState("Fire_Mario_Throw");
+            Instantiate(Fireball2, Spawnpoint2.position, Spawnpoint2.rotation);
+            }
         }
 
         //Move
@@ -387,6 +399,13 @@ public class MarioController : MonoBehaviour
          }
         }
         
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        if(other.gameObject.CompareTag("UGD"))
+            {
+                Tube = false;
+            }
     }
 
     void OnTriggerEnter(Collider other)

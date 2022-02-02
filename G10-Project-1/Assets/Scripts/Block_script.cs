@@ -89,7 +89,7 @@ public class Block_script : MonoBehaviour
                     {
                                myAnimatorController.SetBool("IsHit", true);
                     }
-                    if(coinCount == 10)
+                    if(coinCount >= 10)
                     {
                        
                                transform.parent.GetComponent<Renderer>().material = Mat;
