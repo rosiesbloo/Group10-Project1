@@ -74,6 +74,13 @@ public class KoopaController : MonoBehaviour
             ScoreCounter.score += +200;
             Destroy(gameObject, 0f);
         }
+            if (collision.gameObject.tag == "Player")
+        {
+            moveX *= 0f;
+            rb.detectCollisions = false;
+            rb.isKinematic = true;
+        }
+
 
        
         

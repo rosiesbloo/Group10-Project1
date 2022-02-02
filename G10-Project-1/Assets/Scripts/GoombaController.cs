@@ -87,6 +87,12 @@ public class GoombaController : MonoBehaviour
             ScoreCounter.score += +100;
             Destroy(gameObject, .1f);
         }
+        if (collision.gameObject.tag == "Player")
+        {
+            moveX *= 0f;
+            rb.detectCollisions = false;
+            rb.isKinematic = true;
+        }
 
         
     }
