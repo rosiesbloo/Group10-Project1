@@ -160,26 +160,9 @@ public class MarioController : MonoBehaviour
                     ChangeAnimationState("Starman_Run");
                 }
             }
-            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift) && !Input.GetButtonUp("Jump"))
+            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift) && !Input.GetButtonUp("Jump") || moveDirection != Vector3.zero && Input.GetKey(KeyCode.Z) && !Input.GetButtonUp("Jump") || moveDirection != Vector3.zero && Input.GetKey(KeyCode.RightShift) && !Input.GetButtonUp("Jump"))
             {
                 marioSpeed = runSpeed;
-                if (MarioState == 0 || MarioState == 1)
-                {
-                    ChangeAnimationState("Little_Mario_Run");
-                }
-                else if (MarioState == 2)
-                {
-                    ChangeAnimationState("Fire_Mario_Run");
-                }
-                else if (isStarman)
-                {
-                    ChangeAnimationState("Starman_Run");
-                }
-            }
-            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.RightShift) && !Input.GetButtonUp("Jump"))
-            {
-                marioSpeed = runSpeed;
-
                 if (MarioState == 0 || MarioState == 1)
                 {
                     ChangeAnimationState("Little_Mario_Run");
