@@ -66,8 +66,8 @@ public class MarioController : MonoBehaviour
     //Player States
     public static int MarioState;
     public Color FPColor;
-    public Color RColor;
-    
+    public Color normalColor;
+
 
 
 
@@ -123,6 +123,9 @@ public class MarioController : MonoBehaviour
             if (starmanTimer < 0)
             {
                 isStarman = false;
+                starmanMusic.Stop();
+                mainMusic.Play();
+                gameObject.GetComponent<SpriteRenderer>().material.color = normalColor;
             }
         }
         
@@ -396,8 +399,15 @@ public class MarioController : MonoBehaviour
                     invincibleTimer = timeInvincible;
 
                 }
+
             }
          }
+
+         if (isStarman == true)
+            {
+                ScoreCounter.score += 100;
+                Destroy(GameObject.FindWithTag("Enemy Body"));
+            }
         }
         
     }

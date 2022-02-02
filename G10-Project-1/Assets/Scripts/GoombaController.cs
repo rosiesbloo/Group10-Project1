@@ -90,7 +90,7 @@ public class GoombaController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             moveX *= 0f;
-            rb.detectCollisions = false;
+            rb.detectCollisions = true;
             rb.isKinematic = true;
         }
 
