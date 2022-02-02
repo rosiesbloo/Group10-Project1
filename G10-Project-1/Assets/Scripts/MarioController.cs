@@ -24,6 +24,8 @@ public class MarioController : MonoBehaviour
      public Transform Spawnpoint2;
     public GameObject Fireball1;
     public GameObject Fireball2;
+
+    
     
     public Transform teleportTarget1;
     public Transform teleportTarget2;
@@ -468,6 +470,7 @@ public class MarioController : MonoBehaviour
 
         if (other.gameObject.tag == "FiveTPoints")
         {
+
             ScoreCounter.score += 2000;
             Destroy(GameObject.FindWithTag("EightPounts"));
             Destroy(GameObject.FindWithTag("FiveTPoints"));
